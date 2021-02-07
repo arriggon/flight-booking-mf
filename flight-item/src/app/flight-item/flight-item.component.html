@@ -1,0 +1,19 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      {{dataFromParent.fromAirport}} - {{dataFromParent.toAirport}}
+    </mat-panel-title>
+    <mat-panel-description>
+      {{dataFromParent.departureTime}}
+      <span class="actions">
+        <button mat-button (click)="favorite()"><mat-icon>favorite_border</mat-icon></button>
+        <button mat-button (click)="hide()"><mat-icon>visibility_off</mat-icon></button>
+      </span>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <p>
+    <span class="detail">Duration: {{formatDuration(dataFromParent.flightDuration)}}</span>
+    <span class="detail price">{{dataFromParent.price}}€</span>
+    <span class="detail-button"><button mat-button (click)="openDetail()"><mat-icon>search</mat-icon></button></span>
+  </p>
+</mat-expansion-panel>
