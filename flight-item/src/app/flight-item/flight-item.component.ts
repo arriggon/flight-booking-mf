@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Item } from '../model/item';
 import { ItemChange } from '../model/item-change';
 
@@ -7,13 +7,24 @@ import { ItemChange } from '../model/item-change';
   templateUrl: './flight-item.component.html',
   styleUrls: ['./flight-item.component.scss']
 })
-export class FlightItemComponent implements OnInit {
+export class FlightItemComponent implements OnInit, OnChanges {
   @Input() dataFromParent: Item;
   @Output() emitDataToParent = new EventEmitter<ItemChange>();
+  loaded: boolean = false;
 
   constructor() { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!this.loaded) {
+      this.loaded = true;
+      this.ngOnInit();
+    }
+  }
+
   ngOnInit(): void {
+    if (this.loaded) {
+      console.log('Flight Item Component started.');
+    }
   }
 
   openDetail(): void {
