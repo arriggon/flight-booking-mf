@@ -13,6 +13,8 @@ export class AppComponent {
     toAirport: 'OSL',
     departureTime: '16:30',
     flightDuration: 3.5,
-    price: 600
+    price: 600,
+    favorited: false,
+    hidden: false
   };
 }

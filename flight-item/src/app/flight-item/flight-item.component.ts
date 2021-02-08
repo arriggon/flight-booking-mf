@@ -31,11 +31,13 @@ export class FlightItemComponent implements OnInit, OnChanges {
     this.emitDataToParent.emit({detailOpened: true});
   }
 
-  favorite(): void {
+  favorite($event): void {
+    $event.stopPropagation();
     this.emitDataToParent.emit({favorited: true});
   }
 
-  hide(): void {
+  hide($event): void {
+    $event.stopPropagation();
     this.emitDataToParent.emit({hidden: true});
   }
 
